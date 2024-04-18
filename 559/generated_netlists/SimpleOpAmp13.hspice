@@ -1,0 +1,54 @@
+** Name: SimpleOpAmp13
+
+.MACRO SimpleOpAmp13 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=7e-6 W=8e-6
+mDiodeTransistorPmos2 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 sourcePmos sourcePmos pmos4 L=1e-6 W=324e-6
+mDiodeTransistorPmos3 FirstStageYout1 FirstStageYout1 FirstStageYinnerTransistorStack1Load1 FirstStageYinnerTransistorStack1Load1 pmos4 L=4e-6 W=324e-6
+mNormalTransistorNmos4 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=369e-6
+mNormalTransistorNmos5 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=369e-6
+mNormalTransistorNmos6 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=7e-6 W=567e-6
+mNormalTransistorPmos7 out FirstStageYout1 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 pmos4 L=4e-6 W=324e-6
+mNormalTransistorPmos8 FirstStageYinnerTransistorStack1Load1 FirstStageYinnerTransistorStack2Load1 sourcePmos sourcePmos pmos4 L=1e-6 W=324e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp13
+
+** Expected Performance Values: 
+** Gain: 55 dB
+** Power consumption: 3.56401 mW
+** Area: 8741 (mu_m)^2
+** Transit frequency: 73.0571 MHz
+** Transit frequency with error factor: 73.0566 MHz
+** Slew rate: 68.8542 V/mu_s
+** Phase margin: 76.2034°
+** CMRR: 99 dB
+** VoutMax: 3.69001 V
+** VoutMin: 0.470001 V
+** VcmMax: 3.54001 V
+** VcmMin: 0.870001 V
+
+
+** Expected Currents: 
+** DiodeTransistorPmos: -351.404 muA
+** NormalTransistorPmos: -351.405 muA
+** NormalTransistorPmos: -351.404 muA
+** DiodeTransistorPmos: -351.405 muA
+** NormalTransistorNmos: 702.808 muA
+** NormalTransistorNmos: 351.405 muA
+** NormalTransistorNmos: 351.405 muA
+** DiodeTransistorNmos: 9.99901 muA
+
+
+** Expected Voltages: 
+** ibias: 0.725001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerTransistorStack1Load1: 4.18501  V
+** innerTransistorStack2Load1: 4.18901  V
+** out1: 3.13001  V
+** sourceTransconductance: 1.94501  V
+
+
+.END

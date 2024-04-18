@@ -1,0 +1,56 @@
+** Name: SimpleOpAmp10
+
+.MACRO SimpleOpAmp10 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=2e-6 W=6e-6
+mDiodeTransistorPmos2 inputVoltageBiasXXpXX1 inputVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=14e-6
+mDiodeTransistorPmos3 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=50e-6
+mNormalTransistorNmos4 inputVoltageBiasXXpXX1 ibias sourceNmos sourceNmos nmos4 L=2e-6 W=86e-6
+mNormalTransistorNmos5 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=159e-6
+mNormalTransistorNmos6 FirstStageYinnerSourceLoad1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=159e-6
+mNormalTransistorNmos7 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=2e-6 W=366e-6
+mNormalTransistorPmos8 out inputVoltageBiasXXpXX1 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 pmos4 L=1e-6 W=595e-6
+mNormalTransistorPmos9 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerSourceLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=50e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp10
+
+** Expected Performance Values: 
+** Gain: 55 dB
+** Power consumption: 3.78901 mW
+** Area: 1943 (mu_m)^2
+** Transit frequency: 63.1001 MHz
+** Transit frequency with error factor: 63.1003 MHz
+** Slew rate: 59.4706 V/mu_s
+** Phase margin: 84.2249°
+** CMRR: 98 dB
+** VoutMax: 4.25 V
+** VoutMin: 0.350001 V
+** VcmMax: 4.09001 V
+** VcmMin: 0.75 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 142.147 muA
+** DiodeTransistorPmos: -302.836 muA
+** NormalTransistorPmos: -302.836 muA
+** NormalTransistorPmos: -302.836 muA
+** NormalTransistorNmos: 605.672 muA
+** NormalTransistorNmos: 302.837 muA
+** NormalTransistorNmos: 302.837 muA
+** DiodeTransistorNmos: 9.99901 muA
+** DiodeTransistorPmos: -142.146 muA
+
+
+** Expected Voltages: 
+** ibias: 0.603001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inputVoltageBiasXXpXX1: 3.68601  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerSourceLoad1: 3.85401  V
+** innerTransistorStack2Load1: 4.41801  V
+** sourceTransconductance: 1.94501  V
+
+
+.END

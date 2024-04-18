@@ -1,0 +1,56 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp1_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=3e-6 W=15e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=3e-6 W=4e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=4e-6 W=566e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=3e-6 W=15e-6
+mNormalTransistorPmos5 out ibias sourcePmos sourcePmos pmos4 L=3e-6 W=313e-6
+mNormalTransistorPmos6 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=2e-6 W=43e-6
+mNormalTransistorPmos7 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=2e-6 W=43e-6
+mNormalTransistorPmos8 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=3e-6 W=22e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+** Expected Performance Values: 
+** Gain: 86 dB
+** Power consumption: 4.35001 mW
+** Area: 3543 (mu_m)^2
+** Transit frequency: 14.2841 MHz
+** Transit frequency with error factor: 14.2654 MHz
+** Slew rate: 24.2496 V/mu_s
+** Phase margin: 75.0575°
+** CMRR: 91 dB
+** negPSRR: 93 dB
+** posPSRR: 215 dB
+** VoutMax: 4.35001 V
+** VoutMin: 0.260001 V
+** VcmMax: 3.52001 V
+** VcmMin: 0.100001 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 28.0481 muA
+** NormalTransistorNmos: 28.0481 muA
+** NormalTransistorPmos: -56.0979 muA
+** NormalTransistorPmos: -28.0489 muA
+** NormalTransistorPmos: -28.0489 muA
+** NormalTransistorNmos: 793.815 muA
+** NormalTransistorPmos: -793.814 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 3.78501  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.662001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.662001  V
+** sourceTransconductance: 3.33301  V
+
+
+.END

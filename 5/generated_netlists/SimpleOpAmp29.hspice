@@ -1,0 +1,54 @@
+** Name: SimpleOpAmp29
+
+.MACRO SimpleOpAmp29 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 nmos4 L=2e-6 W=7e-6
+mDiodeTransistorNmos2 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=2e-6 W=10e-6
+mDiodeTransistorPmos3 FirstStageYinnerLoad1 FirstStageYinnerLoad1 sourcePmos sourcePmos pmos4 L=5e-6 W=8e-6
+mNormalTransistorNmos4 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=13e-6
+mNormalTransistorNmos5 FirstStageYinnerLoad1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=13e-6
+mNormalTransistorNmos6 FirstStageYinnerStageBias outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=2e-6 W=33e-6
+mNormalTransistorNmos7 FirstStageYsourceTransconductance ibias FirstStageYinnerStageBias FirstStageYinnerStageBias nmos4 L=2e-6 W=19e-6
+mNormalTransistorPmos8 out FirstStageYinnerLoad1 sourcePmos sourcePmos pmos4 L=5e-6 W=8e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp29
+
+** Expected Performance Values: 
+** Gain: 47 dB
+** Power consumption: 0.212001 mW
+** Area: 270 (mu_m)^2
+** Transit frequency: 3.00201 MHz
+** Transit frequency with error factor: 3.00205 MHz
+** Slew rate: 3.23517 V/mu_s
+** Phase margin: 85.9437°
+** CMRR: 88 dB
+** VoutMax: 4.25 V
+** VoutMin: 0.530001 V
+** VcmMax: 4.09001 V
+** VcmMin: 1.34001 V
+
+
+** Expected Currents: 
+** DiodeTransistorPmos: -16.1869 muA
+** NormalTransistorPmos: -16.1869 muA
+** NormalTransistorNmos: 32.3721 muA
+** NormalTransistorNmos: 32.3731 muA
+** NormalTransistorNmos: 16.1861 muA
+** NormalTransistorNmos: 16.1861 muA
+** DiodeTransistorNmos: 9.99901 muA
+** DiodeTransistorNmos: 9.99801 muA
+
+
+** Expected Voltages: 
+** ibias: 1.14601  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outSourceVoltageBiasXXnXX1: 0.558001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerLoad1: 3.68601  V
+** innerStageBias: 0.540001  V
+** sourceTransconductance: 1.92301  V
+
+
+.END

@@ -1,0 +1,63 @@
+** Name: SymmetricalOpAmp11
+
+.MACRO SymmetricalOpAmp11 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 inTransconductanceComplementarySecondStage inTransconductanceComplementarySecondStage sourceNmos sourceNmos nmos4 L=1e-6 W=51e-6
+mDiodeTransistorNmos2 outFirstStage outFirstStage sourceNmos sourceNmos nmos4 L=1e-6 W=51e-6
+mDiodeTransistorPmos3 ibias ibias sourcePmos sourcePmos pmos4 L=3e-6 W=20e-6
+mDiodeTransistorPmos4 inStageBiasComplementarySecondStage inStageBiasComplementarySecondStage sourcePmos sourcePmos pmos4 L=2e-6 W=90e-6
+mNormalTransistorNmos5 innerComplementarySecondStage inTransconductanceComplementarySecondStage sourceNmos sourceNmos nmos4 L=1e-6 W=154e-6
+mNormalTransistorNmos6 out outFirstStage sourceNmos sourceNmos nmos4 L=1e-6 W=154e-6
+mNormalTransistorPmos7 inTransconductanceComplementarySecondStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=1e-6 W=35e-6
+mNormalTransistorPmos8 innerComplementarySecondStage inStageBiasComplementarySecondStage sourcePmos sourcePmos pmos4 L=2e-6 W=90e-6
+mNormalTransistorPmos9 out innerComplementarySecondStage inStageBiasComplementarySecondStage inStageBiasComplementarySecondStage pmos4 L=1e-6 W=30e-6
+mNormalTransistorPmos10 outFirstStage in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=1e-6 W=35e-6
+mNormalTransistorPmos11 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=3e-6 W=388e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SymmetricalOpAmp11
+
+** Expected Performance Values: 
+** Gain: 46 dB
+** Power consumption: 4.08101 mW
+** Area: 2094 (mu_m)^2
+** Transit frequency: 23.8021 MHz
+** Transit frequency with error factor: 23.8018 MHz
+** Slew rate: 59.7838 V/mu_s
+** Phase margin: 82.506°
+** CMRR: 99 dB
+** negPSRR: 46 dB
+** posPSRR: 162 dB
+** VoutMax: 3.07001 V
+** VoutMin: 0.150001 V
+** VcmMax: 3.75 V
+** VcmMin: -0.00999999 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 98.8441 muA
+** DiodeTransistorNmos: 98.8441 muA
+** NormalTransistorPmos: -197.689 muA
+** NormalTransistorPmos: -98.8449 muA
+** NormalTransistorPmos: -98.8449 muA
+** NormalTransistorNmos: 300.136 muA
+** NormalTransistorPmos: -300.135 muA
+** DiodeTransistorPmos: -300.134 muA
+** NormalTransistorPmos: -298.475 muA
+** NormalTransistorNmos: 298.476 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 4.14501  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inStageBiasComplementarySecondStage: 3.82401  V
+** inTransconductanceComplementarySecondStage: 0.556001  V
+** innerComplementarySecondStage: 2.51001  V
+** out: 2.5  V
+** outFirstStage: 0.556001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** sourceTransconductance: 3.46001  V
+
+
+.END

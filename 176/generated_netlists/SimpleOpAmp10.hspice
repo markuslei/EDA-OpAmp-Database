@@ -1,0 +1,56 @@
+** Name: SimpleOpAmp10
+
+.MACRO SimpleOpAmp10 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=2e-6 W=7e-6
+mDiodeTransistorPmos2 inputVoltageBiasXXpXX1 inputVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=10e-6
+mDiodeTransistorPmos3 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=41e-6
+mNormalTransistorNmos4 inputVoltageBiasXXpXX1 ibias sourceNmos sourceNmos nmos4 L=2e-6 W=71e-6
+mNormalTransistorNmos5 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=134e-6
+mNormalTransistorNmos6 FirstStageYinnerSourceLoad1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=134e-6
+mNormalTransistorNmos7 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=2e-6 W=366e-6
+mNormalTransistorPmos8 out inputVoltageBiasXXpXX1 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 pmos4 L=1e-6 W=594e-6
+mNormalTransistorPmos9 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerSourceLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=41e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp10
+
+** Expected Performance Values: 
+** Gain: 55 dB
+** Power consumption: 3.12601 mW
+** Area: 1842 (mu_m)^2
+** Transit frequency: 53.3931 MHz
+** Transit frequency with error factor: 53.3933 MHz
+** Slew rate: 50.4795 V/mu_s
+** Phase margin: 85.3708°
+** CMRR: 98 dB
+** VoutMax: 4.25 V
+** VoutMin: 0.330001 V
+** VcmMax: 4.09001 V
+** VcmMin: 0.740001 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 101.534 muA
+** DiodeTransistorPmos: -256.82 muA
+** NormalTransistorPmos: -256.82 muA
+** NormalTransistorPmos: -256.82 muA
+** NormalTransistorNmos: 513.641 muA
+** NormalTransistorNmos: 256.821 muA
+** NormalTransistorNmos: 256.821 muA
+** DiodeTransistorNmos: 9.99901 muA
+** DiodeTransistorPmos: -101.533 muA
+
+
+** Expected Voltages: 
+** ibias: 0.588001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inputVoltageBiasXXpXX1: 3.68601  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerSourceLoad1: 3.84101  V
+** innerTransistorStack2Load1: 4.40501  V
+** sourceTransconductance: 1.94401  V
+
+
+.END

@@ -1,0 +1,77 @@
+** Name: SymmetricalOpAmp8
+
+.MACRO SymmetricalOpAmp8 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 inOutputTransconductanceComplementarySecondStage inOutputTransconductanceComplementarySecondStage sourceNmos sourceNmos nmos4 L=4e-6 W=20e-6
+mDiodeTransistorNmos2 inSourceTransconductanceComplementarySecondStage inSourceTransconductanceComplementarySecondStage sourceNmos sourceNmos nmos4 L=6e-6 W=120e-6
+mDiodeTransistorNmos3 outFirstStage outFirstStage sourceNmos sourceNmos nmos4 L=6e-6 W=120e-6
+mDiodeTransistorPmos4 ibias ibias sourcePmos sourcePmos pmos4 L=3e-6 W=21e-6
+mDiodeTransistorPmos5 inSourceStageBiasComplementarySecondStage inSourceStageBiasComplementarySecondStage sourcePmos sourcePmos pmos4 L=1e-6 W=91e-6
+mDiodeTransistorPmos6 innerComplementarySecondStage innerComplementarySecondStage inSourceStageBiasComplementarySecondStage inSourceStageBiasComplementarySecondStage pmos4 L=1e-6 W=33e-6
+mNormalTransistorNmos7 innerComplementarySecondStage inOutputTransconductanceComplementarySecondStage TransconductanceComplementarySecondStageYinner TransconductanceComplementarySecondStageYinner nmos4 L=4e-6 W=81e-6
+mNormalTransistorNmos8 out inOutputTransconductanceComplementarySecondStage SecondStageYinnerTransconductance SecondStageYinnerTransconductance nmos4 L=4e-6 W=81e-6
+mNormalTransistorNmos9 SecondStageYinnerTransconductance outFirstStage sourceNmos sourceNmos nmos4 L=6e-6 W=130e-6
+mNormalTransistorNmos10 TransconductanceComplementarySecondStageYinner inSourceTransconductanceComplementarySecondStage sourceNmos sourceNmos nmos4 L=6e-6 W=130e-6
+mNormalTransistorPmos11 inOutputTransconductanceComplementarySecondStage ibias sourcePmos sourcePmos pmos4 L=3e-6 W=83e-6
+mNormalTransistorPmos12 inSourceTransconductanceComplementarySecondStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=10e-6 W=160e-6
+mNormalTransistorPmos13 out innerComplementarySecondStage SecondStageYinnerStageBias SecondStageYinnerStageBias pmos4 L=1e-6 W=42e-6
+mNormalTransistorPmos14 outFirstStage in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=10e-6 W=160e-6
+mNormalTransistorPmos15 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=3e-6 W=159e-6
+mNormalTransistorPmos16 SecondStageYinnerStageBias inSourceStageBiasComplementarySecondStage sourcePmos sourcePmos pmos4 L=1e-6 W=91e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SymmetricalOpAmp8
+
+** Expected Performance Values: 
+** Gain: 92 dB
+** Power consumption: 1.09201 mW
+** Area: 7974 (mu_m)^2
+** Transit frequency: 3.58901 MHz
+** Transit frequency with error factor: 3.58905 MHz
+** Slew rate: 8.23093 V/mu_s
+** Phase margin: 71.0468°
+** CMRR: 145 dB
+** negPSRR: 47 dB
+** posPSRR: 75 dB
+** VoutMax: 4.04001 V
+** VoutMin: 0.300001 V
+** VcmMax: 3.79001 V
+** VcmMin: -0.00999999 V
+
+
+** Expected Currents: 
+** NormalTransistorPmos: -39.7709 muA
+** DiodeTransistorNmos: 38.0931 muA
+** DiodeTransistorNmos: 38.0931 muA
+** NormalTransistorPmos: -76.1889 muA
+** NormalTransistorPmos: -38.0939 muA
+** NormalTransistorPmos: -38.0939 muA
+** NormalTransistorNmos: 41.2661 muA
+** NormalTransistorNmos: 41.2671 muA
+** NormalTransistorPmos: -41.2669 muA
+** NormalTransistorPmos: -41.2679 muA
+** DiodeTransistorPmos: -41.2689 muA
+** DiodeTransistorPmos: -41.2699 muA
+** NormalTransistorNmos: 41.2681 muA
+** NormalTransistorNmos: 41.2671 muA
+** DiodeTransistorNmos: 39.7701 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 4.15201  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inOutputTransconductanceComplementarySecondStage: 0.710001  V
+** inSourceStageBiasComplementarySecondStage: 4.27601  V
+** inSourceTransconductanceComplementarySecondStage: 0.555001  V
+** innerComplementarySecondStage: 3.44701  V
+** out: 2.5  V
+** outFirstStage: 0.555001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** sourceTransconductance: 3.42801  V
+** innerStageBias: 4.24501  V
+** innerTransconductance: 0.150001  V
+** inner: 0.150001  V
+
+
+.END

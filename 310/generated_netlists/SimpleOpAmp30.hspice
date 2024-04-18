@@ -1,0 +1,54 @@
+** Name: SimpleOpAmp30
+
+.MACRO SimpleOpAmp30 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias VoltageBiasXXnXX1Yinner VoltageBiasXXnXX1Yinner nmos4 L=2e-6 W=6e-6
+mDiodeTransistorNmos2 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=2e-6 W=574e-6
+mDiodeTransistorPmos3 FirstStageYinnerLoad1 FirstStageYinnerLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=47e-6
+mNormalTransistorNmos4 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=453e-6
+mNormalTransistorNmos5 FirstStageYinnerLoad1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=453e-6
+mNormalTransistorNmos6 FirstStageYsourceTransconductance ibias outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 nmos4 L=2e-6 W=574e-6
+mNormalTransistorNmos7 VoltageBiasXXnXX1Yinner outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=2e-6 W=6e-6
+mNormalTransistorPmos8 out FirstStageYinnerLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=47e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp30
+
+** Expected Performance Values: 
+** Gain: 48 dB
+** Power consumption: 4.76501 mW
+** Area: 4226 (mu_m)^2
+** Transit frequency: 94.0591 MHz
+** Transit frequency with error factor: 94.0587 MHz
+** Slew rate: 92.6777 V/mu_s
+** Phase margin: 82.506°
+** CMRR: 89 dB
+** VoutMax: 4.25 V
+** VoutMin: 0.960001 V
+** VcmMax: 4.09001 V
+** VcmMin: 1.36001 V
+
+
+** Expected Currents: 
+** DiodeTransistorPmos: -471.506 muA
+** NormalTransistorPmos: -471.506 muA
+** NormalTransistorNmos: 943.014 muA
+** DiodeTransistorNmos: 943.015 muA
+** NormalTransistorNmos: 471.507 muA
+** NormalTransistorNmos: 471.507 muA
+** DiodeTransistorNmos: 9.99901 muA
+** NormalTransistorNmos: 9.99801 muA
+
+
+** Expected Voltages: 
+** ibias: 1.20501  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outSourceVoltageBiasXXnXX1: 0.603001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerLoad1: 3.68601  V
+** sourceTransconductance: 1.93801  V
+** inner: 0.601001  V
+
+
+.END

@@ -1,0 +1,54 @@
+** Name: SimpleOpAmp11
+
+.MACRO SimpleOpAmp11 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=2e-6 W=7e-6
+mDiodeTransistorPmos2 FirstStageYinnerOutputLoad1 FirstStageYinnerOutputLoad1 FirstStageYinnerTransistorStack1Load1 FirstStageYinnerTransistorStack1Load1 pmos4 L=1e-6 W=108e-6
+mDiodeTransistorPmos3 FirstStageYinnerTransistorStack1Load1 FirstStageYinnerTransistorStack1Load1 sourcePmos sourcePmos pmos4 L=1e-6 W=97e-6
+mNormalTransistorNmos4 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=245e-6
+mNormalTransistorNmos5 FirstStageYinnerOutputLoad1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=2e-6 W=245e-6
+mNormalTransistorNmos6 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=2e-6 W=390e-6
+mNormalTransistorPmos7 out FirstStageYinnerOutputLoad1 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 pmos4 L=1e-6 W=108e-6
+mNormalTransistorPmos8 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack1Load1 sourcePmos sourcePmos pmos4 L=1e-6 W=97e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp11
+
+** Expected Performance Values: 
+** Gain: 54 dB
+** Power consumption: 2.78701 mW
+** Area: 2184 (mu_m)^2
+** Transit frequency: 53.0161 MHz
+** Transit frequency with error factor: 53.0164 MHz
+** Slew rate: 54.1147 V/mu_s
+** Phase margin: 83.0789°
+** CMRR: 101 dB
+** VoutMax: 3.66001 V
+** VoutMin: 0.350001 V
+** VcmMax: 3.5 V
+** VcmMin: 0.75 V
+
+
+** Expected Currents: 
+** DiodeTransistorPmos: -273.661 muA
+** DiodeTransistorPmos: -273.662 muA
+** NormalTransistorPmos: -273.661 muA
+** NormalTransistorPmos: -273.662 muA
+** NormalTransistorNmos: 547.323 muA
+** NormalTransistorNmos: 273.662 muA
+** NormalTransistorNmos: 273.662 muA
+** DiodeTransistorNmos: 9.99901 muA
+
+
+** Expected Voltages: 
+** ibias: 0.588001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerOutputLoad1: 3.09501  V
+** innerTransistorStack1Load1: 4.03701  V
+** innerTransistorStack2Load1: 4.03401  V
+** sourceTransconductance: 1.93201  V
+
+
+.END

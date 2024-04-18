@@ -1,0 +1,51 @@
+** Name: SimpleOpAmp2
+
+.MACRO SimpleOpAmp2 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 sourceNmos sourceNmos nmos4 L=1e-6 W=82e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=2e-6 W=6e-6
+mNormalTransistorNmos3 out FirstStageYout1 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 nmos4 L=1e-6 W=60e-6
+mNormalTransistorNmos4 FirstStageYout1 FirstStageYinnerSourceLoad1 sourceNmos sourceNmos nmos4 L=1e-6 W=82e-6
+mNormalTransistorPmos5 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=1e-6 W=600e-6
+mNormalTransistorPmos6 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=1e-6 W=600e-6
+mNormalTransistorPmos7 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=2e-6 W=600e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp2
+
+** Expected Performance Values: 
+** Gain: 50 dB
+** Power consumption: 5.20001 mW
+** Area: 2636 (mu_m)^2
+** Transit frequency: 73.1351 MHz
+** Transit frequency with error factor: 73.135 MHz
+** Slew rate: 100.219 V/mu_s
+** Phase margin: 88.2356°
+** CMRR: 97 dB
+** VoutMax: 4.35001 V
+** VoutMin: 0.990001 V
+** VcmMax: 3.79001 V
+** VcmMin: 0.430001 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 509.988 muA
+** NormalTransistorNmos: 509.988 muA
+** DiodeTransistorNmos: 509.988 muA
+** NormalTransistorPmos: -1019.97 muA
+** NormalTransistorPmos: -509.987 muA
+** NormalTransistorPmos: -509.987 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 4.00201  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerSourceLoad1: 0.676001  V
+** out1: 1.39901  V
+** sourceTransconductance: 3.28101  V
+
+
+.END

@@ -1,0 +1,54 @@
+** Name: SimpleOpAmp13
+
+.MACRO SimpleOpAmp13 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=2e-6 W=10e-6
+mDiodeTransistorPmos2 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=111e-6
+mDiodeTransistorPmos3 FirstStageYout1 FirstStageYout1 FirstStageYinnerTransistorStack1Load1 FirstStageYinnerTransistorStack1Load1 pmos4 L=1e-6 W=111e-6
+mNormalTransistorNmos4 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=157e-6
+mNormalTransistorNmos5 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=157e-6
+mNormalTransistorNmos6 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=2e-6 W=599e-6
+mNormalTransistorPmos7 out FirstStageYout1 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 pmos4 L=1e-6 W=111e-6
+mNormalTransistorPmos8 FirstStageYinnerTransistorStack1Load1 FirstStageYinnerSourceLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=111e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp13
+
+** Expected Performance Values: 
+** Gain: 55 dB
+** Power consumption: 3.04701 mW
+** Area: 1976 (mu_m)^2
+** Transit frequency: 63 MHz
+** Transit frequency with error factor: 63.0001 MHz
+** Slew rate: 59.4388 V/mu_s
+** Phase margin: 81.933°
+** CMRR: 101 dB
+** VoutMax: 3.66001 V
+** VoutMin: 0.300001 V
+** VcmMax: 3.5 V
+** VcmMin: 0.710001 V
+
+
+** Expected Currents: 
+** DiodeTransistorPmos: -299.658 muA
+** NormalTransistorPmos: -299.659 muA
+** NormalTransistorPmos: -299.658 muA
+** DiodeTransistorPmos: -299.659 muA
+** NormalTransistorNmos: 599.316 muA
+** NormalTransistorNmos: 299.659 muA
+** NormalTransistorNmos: 299.659 muA
+** DiodeTransistorNmos: 9.99901 muA
+
+
+** Expected Voltages: 
+** ibias: 0.558001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerSourceLoad1: 4.04701  V
+** innerTransistorStack1Load1: 4.04401  V
+** out1: 3.09301  V
+** sourceTransconductance: 1.94501  V
+
+
+.END

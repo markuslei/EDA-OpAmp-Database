@@ -1,0 +1,54 @@
+** Name: SimpleOpAmp30
+
+.MACRO SimpleOpAmp30 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=2e-6 W=487e-6
+mDiodeTransistorNmos2 ibias ibias VoltageBiasXXnXX1Yinner VoltageBiasXXnXX1Yinner nmos4 L=2e-6 W=5e-6
+mDiodeTransistorPmos3 FirstStageYinnerLoad1 FirstStageYinnerLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=74e-6
+mNormalTransistorNmos4 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=214e-6
+mNormalTransistorNmos5 FirstStageYinnerLoad1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=214e-6
+mNormalTransistorNmos6 FirstStageYsourceTransconductance ibias outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 nmos4 L=2e-6 W=487e-6
+mNormalTransistorNmos7 VoltageBiasXXnXX1Yinner outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=2e-6 W=5e-6
+mNormalTransistorPmos8 out FirstStageYinnerLoad1 sourcePmos sourcePmos pmos4 L=1e-6 W=74e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp30
+
+** Expected Performance Values: 
+** Gain: 47 dB
+** Power consumption: 4.85501 mW
+** Area: 2544 (mu_m)^2
+** Transit frequency: 93.0501 MHz
+** Transit frequency with error factor: 93.0501 MHz
+** Slew rate: 95.2189 V/mu_s
+** Phase margin: 82.506°
+** CMRR: 90 dB
+** VoutMax: 4.40001 V
+** VoutMin: 1 V
+** VcmMax: 4.24001 V
+** VcmMin: 1.40001 V
+
+
+** Expected Currents: 
+** DiodeTransistorPmos: -480.5 muA
+** NormalTransistorPmos: -480.5 muA
+** NormalTransistorNmos: 961.002 muA
+** DiodeTransistorNmos: 961.003 muA
+** NormalTransistorNmos: 480.501 muA
+** NormalTransistorNmos: 480.501 muA
+** DiodeTransistorNmos: 9.99901 muA
+** NormalTransistorNmos: 9.99801 muA
+
+
+** Expected Voltages: 
+** ibias: 1.24201  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outSourceVoltageBiasXXnXX1: 0.622001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerLoad1: 3.83101  V
+** sourceTransconductance: 1.93201  V
+** inner: 0.619001  V
+
+
+.END

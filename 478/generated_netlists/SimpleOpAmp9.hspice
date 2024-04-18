@@ -1,0 +1,51 @@
+** Name: SimpleOpAmp9
+
+.MACRO SimpleOpAmp9 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=3e-6 W=4e-6
+mDiodeTransistorPmos2 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 sourcePmos sourcePmos pmos4 L=1e-6 W=34e-6
+mNormalTransistorNmos3 out in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=100e-6
+mNormalTransistorNmos4 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=1e-6 W=100e-6
+mNormalTransistorNmos5 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=3e-6 W=176e-6
+mNormalTransistorPmos6 out FirstStageYout1 FirstStageYinnerTransistorStack2Load1 FirstStageYinnerTransistorStack2Load1 pmos4 L=1e-6 W=22e-6
+mNormalTransistorPmos7 FirstStageYout1 FirstStageYinnerTransistorStack2Load1 sourcePmos sourcePmos pmos4 L=1e-6 W=34e-6
+Capacitor1 out sourceNmos 10e-12
+.EOM SimpleOpAmp9
+
+** Expected Performance Values: 
+** Gain: 54 dB
+** Power consumption: 2.22401 mW
+** Area: 830 (mu_m)^2
+** Transit frequency: 43 MHz
+** Transit frequency with error factor: 43.0001 MHz
+** Slew rate: 43.2963 V/mu_s
+** Phase margin: 88.2356°
+** CMRR: 95 dB
+** VoutMax: 3.10001 V
+** VoutMin: 0.460001 V
+** VcmMax: 3.5 V
+** VcmMin: 0.860001 V
+
+
+** Expected Currents: 
+** NormalTransistorPmos: -217.387 muA
+** NormalTransistorPmos: -217.387 muA
+** DiodeTransistorPmos: -217.387 muA
+** NormalTransistorNmos: 434.774 muA
+** NormalTransistorNmos: 217.388 muA
+** NormalTransistorNmos: 217.388 muA
+** DiodeTransistorNmos: 9.99901 muA
+
+
+** Expected Voltages: 
+** ibias: 0.702001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerTransistorStack2Load1: 3.83501  V
+** out1: 2.53101  V
+** sourceTransconductance: 1.93401  V
+
+
+.END
