@@ -1,0 +1,56 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp1_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=10e-6 W=31e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=4e-6 W=6e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=1e-6 W=46e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=10e-6 W=31e-6
+mNormalTransistorPmos5 out ibias sourcePmos sourcePmos pmos4 L=4e-6 W=52e-6
+mNormalTransistorPmos6 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=4e-6 W=27e-6
+mNormalTransistorPmos7 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=4e-6 W=27e-6
+mNormalTransistorPmos8 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=4e-6 W=7e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+** Expected Performance Values: 
+** Gain: 93 dB
+** Power consumption: 0.600001 mW
+** Area: 1142 (mu_m)^2
+** Transit frequency: 3.67701 MHz
+** Transit frequency with error factor: 3.6714 MHz
+** Slew rate: 5.12378 V/mu_s
+** Phase margin: 69.9009°
+** CMRR: 98 dB
+** negPSRR: 99 dB
+** posPSRR: 215 dB
+** VoutMax: 4.39001 V
+** VoutMin: 0.150001 V
+** VcmMax: 3.60001 V
+** VcmMin: -0.00999999 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 5.93401 muA
+** NormalTransistorNmos: 5.93401 muA
+** NormalTransistorPmos: -11.8689 muA
+** NormalTransistorPmos: -5.93499 muA
+** NormalTransistorPmos: -5.93499 muA
+** NormalTransistorNmos: 88.0661 muA
+** NormalTransistorPmos: -88.0669 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 3.82301  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.555001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.555001  V
+** sourceTransconductance: 3.28501  V
+
+
+.END

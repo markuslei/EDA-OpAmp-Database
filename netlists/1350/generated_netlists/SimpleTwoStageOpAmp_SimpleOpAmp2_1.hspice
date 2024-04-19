@@ -1,0 +1,59 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp2_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp2_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 sourceNmos sourceNmos nmos4 L=6e-6 W=45e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=5e-6 W=6e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=3e-6 W=237e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 FirstStageYinnerSourceLoad1 FirstStageYinnerSourceLoad1 nmos4 L=8e-6 W=118e-6
+mNormalTransistorNmos5 FirstStageYout1 FirstStageYinnerSourceLoad1 sourceNmos sourceNmos nmos4 L=6e-6 W=45e-6
+mNormalTransistorPmos6 out ibias sourcePmos sourcePmos pmos4 L=5e-6 W=574e-6
+mNormalTransistorPmos7 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=9e-6 W=535e-6
+mNormalTransistorPmos8 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=9e-6 W=535e-6
+mNormalTransistorPmos9 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=5e-6 W=37e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp2_1
+
+** Expected Performance Values: 
+** Gain: 92 dB
+** Power consumption: 5.19501 mW
+** Area: 14910 (mu_m)^2
+** Transit frequency: 23.6531 MHz
+** Transit frequency with error factor: 23.631 MHz
+** Slew rate: 25.5626 V/mu_s
+** Phase margin: 60.7336°
+** CMRR: 105 dB
+** negPSRR: 99 dB
+** posPSRR: 102 dB
+** VoutMax: 4.31001 V
+** VoutMin: 0.380001 V
+** VcmMax: 3.58001 V
+** VcmMin: 0.220001 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 31.4291 muA
+** NormalTransistorNmos: 31.4291 muA
+** DiodeTransistorNmos: 31.4291 muA
+** NormalTransistorPmos: -62.8589 muA
+** NormalTransistorPmos: -31.4299 muA
+** NormalTransistorPmos: -31.4299 muA
+** NormalTransistorNmos: 956.094 muA
+** NormalTransistorPmos: -956.093 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 3.75  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.785001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerSourceLoad1: 0.627001  V
+** out1: 1.19001  V
+** sourceTransconductance: 3.23601  V
+
+
+.END

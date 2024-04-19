@@ -1,0 +1,56 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp1_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=5e-6 W=173e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=2e-6 W=5e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=1e-6 W=507e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=5e-6 W=173e-6
+mNormalTransistorPmos5 out ibias sourcePmos sourcePmos pmos4 L=2e-6 W=482e-6
+mNormalTransistorPmos6 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=1e-6 W=125e-6
+mNormalTransistorPmos7 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=1e-6 W=125e-6
+mNormalTransistorPmos8 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=2e-6 W=65e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.40001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+** Expected Performance Values: 
+** Gain: 95 dB
+** Power consumption: 5.61101 mW
+** Area: 3591 (mu_m)^2
+** Transit frequency: 49.2061 MHz
+** Transit frequency with error factor: 49.1388 MHz
+** Slew rate: 53.2168 V/mu_s
+** Phase margin: 65.3172°
+** CMRR: 100 dB
+** negPSRR: 102 dB
+** posPSRR: 226 dB
+** VoutMax: 4.53001 V
+** VoutMin: 0.150001 V
+** VcmMax: 3.79001 V
+** VcmMin: -0.00999999 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 66.1791 muA
+** NormalTransistorNmos: 66.1791 muA
+** NormalTransistorPmos: -132.359 muA
+** NormalTransistorPmos: -66.1799 muA
+** NormalTransistorPmos: -66.1799 muA
+** NormalTransistorNmos: 969.762 muA
+** NormalTransistorPmos: -969.761 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 3.96101  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.555001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.555001  V
+** sourceTransconductance: 3.23601  V
+
+
+.END

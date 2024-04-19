@@ -1,0 +1,88 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp50_12
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp50_12 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias sourceNmos sourceNmos nmos4 L=9e-6 W=13e-6
+mDiodeTransistorNmos2 outInputVoltageBiasXXnXX1 outInputVoltageBiasXXnXX1 VoltageBiasXXnXX1Yinner VoltageBiasXXnXX1Yinner nmos4 L=3e-6 W=9e-6
+mDiodeTransistorNmos3 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=3e-6 W=573e-6
+mDiodeTransistorNmos4 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=1e-6 W=36e-6
+mDiodeTransistorPmos5 outVoltageBiasXXpXX1 outVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=13e-6
+mDiodeTransistorPmos6 outVoltageBiasXXpXX2 outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=556e-6
+mNormalTransistorNmos7 out outInputVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 nmos4 L=3e-6 W=573e-6
+mNormalTransistorNmos8 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=1e-6 W=36e-6
+mNormalTransistorNmos9 outVoltageBiasXXpXX1 ibias sourceNmos sourceNmos nmos4 L=9e-6 W=173e-6
+mNormalTransistorNmos10 outVoltageBiasXXpXX2 ibias sourceNmos sourceNmos nmos4 L=9e-6 W=316e-6
+mNormalTransistorNmos11 FirstStageYsourceGCC1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=3e-6 W=85e-6
+mNormalTransistorNmos12 FirstStageYsourceGCC2 in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=3e-6 W=85e-6
+mNormalTransistorNmos13 FirstStageYsourceTransconductance ibias sourceNmos sourceNmos nmos4 L=9e-6 W=148e-6
+mNormalTransistorNmos14 VoltageBiasXXnXX1Yinner outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=3e-6 W=9e-6
+mNormalTransistorPmos15 out outVoltageBiasXXpXX1 SecondStageYinnerTransconductance SecondStageYinnerTransconductance pmos4 L=1e-6 W=599e-6
+mNormalTransistorPmos16 outFirstStage outVoltageBiasXXpXX1 FirstStageYsourceGCC2 FirstStageYsourceGCC2 pmos4 L=1e-6 W=220e-6
+mNormalTransistorPmos17 outInputVoltageBiasXXnXX1 outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=46e-6
+mNormalTransistorPmos18 FirstStageYout1 outVoltageBiasXXpXX1 FirstStageYsourceGCC1 FirstStageYsourceGCC1 pmos4 L=1e-6 W=220e-6
+mNormalTransistorPmos19 FirstStageYsourceGCC1 outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=338e-6
+mNormalTransistorPmos20 FirstStageYsourceGCC2 outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=338e-6
+mNormalTransistorPmos21 SecondStageYinnerTransconductance outFirstStage sourcePmos sourcePmos pmos4 L=1e-6 W=423e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 8.5e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp50_12
+
+** Expected Performance Values: 
+** Gain: 137 dB
+** Power consumption: 9.75401 mW
+** Area: 12677 (mu_m)^2
+** Transit frequency: 13.6021 MHz
+** Transit frequency with error factor: 13.5916 MHz
+** Slew rate: 11.7383 V/mu_s
+** Phase margin: 55.004°
+** CMRR: 108 dB
+** VoutMax: 4.25 V
+** VoutMin: 0.960001 V
+** VcmMax: 5.25 V
+** VcmMin: 0.840001 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 131.994 muA
+** NormalTransistorNmos: 241.116 muA
+** NormalTransistorPmos: -19.8259 muA
+** NormalTransistorPmos: -89.3489 muA
+** NormalTransistorPmos: -145.323 muA
+** NormalTransistorPmos: -89.3489 muA
+** NormalTransistorPmos: -145.323 muA
+** DiodeTransistorNmos: 89.3481 muA
+** NormalTransistorNmos: 89.3481 muA
+** NormalTransistorNmos: 111.949 muA
+** NormalTransistorNmos: 55.9741 muA
+** NormalTransistorNmos: 55.9741 muA
+** NormalTransistorNmos: 1257.26 muA
+** DiodeTransistorNmos: 1257.26 muA
+** NormalTransistorPmos: -1257.25 muA
+** NormalTransistorPmos: -1257.25 muA
+** DiodeTransistorNmos: 19.8251 muA
+** NormalTransistorNmos: 19.8241 muA
+** DiodeTransistorNmos: 9.99901 muA
+** DiodeTransistorPmos: -131.993 muA
+** DiodeTransistorPmos: -241.115 muA
+
+
+** Expected Voltages: 
+** ibias: 0.690001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 4.02701  V
+** outInputVoltageBiasXXnXX1: 1.36601  V
+** outSourceVoltageBiasXXnXX1: 0.683001  V
+** outVoltageBiasXXpXX1: 3.68601  V
+** outVoltageBiasXXpXX2: 4.28101  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.576001  V
+** sourceGCC1: 4.40001  V
+** sourceGCC2: 4.40001  V
+** sourceTransconductance: 1.94201  V
+** innerTransconductance: 4.59101  V
+** inner: 0.681001  V
+
+
+.END

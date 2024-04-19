@@ -1,0 +1,56 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp1_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=6e-6 W=170e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=4e-6 W=14e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=1e-6 W=178e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=6e-6 W=170e-6
+mNormalTransistorPmos5 out ibias sourcePmos sourcePmos pmos4 L=4e-6 W=476e-6
+mNormalTransistorPmos6 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=9e-6 W=95e-6
+mNormalTransistorPmos7 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=9e-6 W=95e-6
+mNormalTransistorPmos8 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=4e-6 W=150e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+** Expected Performance Values: 
+** Gain: 85 dB
+** Power consumption: 2.35401 mW
+** Area: 6488 (mu_m)^2
+** Transit frequency: 13.5531 MHz
+** Transit frequency with error factor: 13.5083 MHz
+** Slew rate: 27.5047 V/mu_s
+** Phase margin: 70.4739°
+** CMRR: 90 dB
+** negPSRR: 92 dB
+** posPSRR: 213 dB
+** VoutMax: 4.60001 V
+** VoutMin: 0.150001 V
+** VcmMax: 3.5 V
+** VcmMin: -0.00999999 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 54.4221 muA
+** NormalTransistorNmos: 54.4221 muA
+** NormalTransistorPmos: -108.844 muA
+** NormalTransistorPmos: -54.4229 muA
+** NormalTransistorPmos: -54.4229 muA
+** NormalTransistorNmos: 341.904 muA
+** NormalTransistorPmos: -341.903 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 4.03501  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.555001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.555001  V
+** sourceTransconductance: 3.59901  V
+
+
+.END

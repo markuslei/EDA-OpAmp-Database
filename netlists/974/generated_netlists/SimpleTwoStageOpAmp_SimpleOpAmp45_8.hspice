@@ -1,0 +1,83 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp45_8
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp45_8 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 nmos4 L=4e-6 W=4e-6
+mDiodeTransistorNmos2 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=4e-6 W=21e-6
+mDiodeTransistorPmos3 inputVoltageBiasXXpXX1 inputVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=5e-6 W=98e-6
+mDiodeTransistorPmos4 inputVoltageBiasXXpXX2 inputVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=6e-6 W=206e-6
+mDiodeTransistorPmos5 FirstStageYout1 FirstStageYout1 sourcePmos sourcePmos pmos4 L=1e-6 W=24e-6
+mNormalTransistorNmos6 inputVoltageBiasXXpXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=4e-6 W=417e-6
+mNormalTransistorNmos7 inputVoltageBiasXXpXX2 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=4e-6 W=432e-6
+mNormalTransistorNmos8 out ibias SecondStageYinnerStageBias SecondStageYinnerStageBias nmos4 L=4e-6 W=69e-6
+mNormalTransistorNmos9 outFirstStage ibias FirstStageYsourceGCC2 FirstStageYsourceGCC2 nmos4 L=4e-6 W=4e-6
+mNormalTransistorNmos10 FirstStageYout1 ibias FirstStageYsourceGCC1 FirstStageYsourceGCC1 nmos4 L=4e-6 W=4e-6
+mNormalTransistorNmos11 FirstStageYsourceGCC1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=4e-6 W=37e-6
+mNormalTransistorNmos12 FirstStageYsourceGCC2 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=4e-6 W=37e-6
+mNormalTransistorNmos13 SecondStageYinnerStageBias outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=4e-6 W=600e-6
+mNormalTransistorPmos14 out outFirstStage sourcePmos sourcePmos pmos4 L=6e-6 W=324e-6
+mNormalTransistorPmos15 outFirstStage inputVoltageBiasXXpXX1 FirstStageYinnerTransistorStack2Load2 FirstStageYinnerTransistorStack2Load2 pmos4 L=5e-6 W=102e-6
+mNormalTransistorPmos16 FirstStageYinnerTransistorStack2Load2 FirstStageYout1 sourcePmos sourcePmos pmos4 L=1e-6 W=24e-6
+mNormalTransistorPmos17 FirstStageYsourceGCC1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=8e-6 W=43e-6
+mNormalTransistorPmos18 FirstStageYsourceGCC2 in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=8e-6 W=43e-6
+mNormalTransistorPmos19 FirstStageYsourceTransconductance inputVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=6e-6 W=12e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp45_8
+
+** Expected Performance Values: 
+** Gain: 120 dB
+** Power consumption: 3.69601 mW
+** Area: 11488 (mu_m)^2
+** Transit frequency: 3.25 MHz
+** Transit frequency with error factor: 3.25003 MHz
+** Slew rate: 5.04506 V/mu_s
+** Phase margin: 68.755°
+** CMRR: 137 dB
+** VoutMax: 4.45001 V
+** VoutMin: 1 V
+** VcmMax: 3.61001 V
+** VcmMin: -0.409999 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 199.006 muA
+** NormalTransistorNmos: 206.327 muA
+** NormalTransistorNmos: 11.7241 muA
+** NormalTransistorNmos: 17.6181 muA
+** NormalTransistorNmos: 11.7241 muA
+** NormalTransistorNmos: 17.6181 muA
+** DiodeTransistorPmos: -11.7249 muA
+** NormalTransistorPmos: -11.7249 muA
+** NormalTransistorPmos: -11.7249 muA
+** NormalTransistorPmos: -11.7909 muA
+** NormalTransistorPmos: -5.89499 muA
+** NormalTransistorPmos: -5.89499 muA
+** NormalTransistorNmos: 288.581 muA
+** NormalTransistorNmos: 288.58 muA
+** NormalTransistorPmos: -288.58 muA
+** DiodeTransistorNmos: 9.99901 muA
+** DiodeTransistorNmos: 10.0001 muA
+** DiodeTransistorPmos: -199.005 muA
+** DiodeTransistorPmos: -206.326 muA
+
+
+** Expected Voltages: 
+** ibias: 1.30201  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inputVoltageBiasXXpXX1: 3.68601  V
+** inputVoltageBiasXXpXX2: 3.85901  V
+** out: 2.5  V
+** outFirstStage: 3.88701  V
+** outSourceVoltageBiasXXnXX1: 0.555001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerTransistorStack2Load2: 4.42901  V
+** out1: 4.27001  V
+** sourceGCC1: 0.523001  V
+** sourceGCC2: 0.523001  V
+** sourceTransconductance: 3.31101  V
+** innerStageBias: 0.452001  V
+
+
+.END

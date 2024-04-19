@@ -1,0 +1,83 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp44_3
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp44_3 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 ibias ibias outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 nmos4 L=6e-6 W=28e-6
+mDiodeTransistorNmos2 outSourceVoltageBiasXXnXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=6e-6 W=31e-6
+mDiodeTransistorPmos3 inputVoltageBiasXXpXX1 inputVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=11e-6
+mDiodeTransistorPmos4 outVoltageBiasXXpXX2 outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=17e-6
+mDiodeTransistorPmos5 FirstStageYinnerSourceLoad2 FirstStageYinnerSourceLoad2 sourcePmos sourcePmos pmos4 L=4e-6 W=100e-6
+mNormalTransistorNmos6 out outFirstStage sourceNmos sourceNmos nmos4 L=3e-6 W=100e-6
+mNormalTransistorNmos7 inputVoltageBiasXXpXX1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=6e-6 W=347e-6
+mNormalTransistorNmos8 outFirstStage ibias FirstStageYsourceGCC2 FirstStageYsourceGCC2 nmos4 L=6e-6 W=182e-6
+mNormalTransistorNmos9 outVoltageBiasXXpXX2 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=6e-6 W=67e-6
+mNormalTransistorNmos10 FirstStageYout1 ibias FirstStageYsourceGCC1 FirstStageYsourceGCC1 nmos4 L=6e-6 W=182e-6
+mNormalTransistorNmos11 FirstStageYsourceGCC1 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=6e-6 W=402e-6
+mNormalTransistorNmos12 FirstStageYsourceGCC2 outSourceVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=6e-6 W=402e-6
+mNormalTransistorPmos13 out inputVoltageBiasXXpXX1 SecondStageYinnerStageBias SecondStageYinnerStageBias pmos4 L=1e-6 W=597e-6
+mNormalTransistorPmos14 outFirstStage FirstStageYout1 FirstStageYinnerSourceLoad2 FirstStageYinnerSourceLoad2 pmos4 L=4e-6 W=48e-6
+mNormalTransistorPmos15 FirstStageYout1 FirstStageYinnerSourceLoad2 sourcePmos sourcePmos pmos4 L=4e-6 W=100e-6
+mNormalTransistorPmos16 FirstStageYsourceGCC1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=4e-6 W=64e-6
+mNormalTransistorPmos17 FirstStageYsourceGCC2 in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=4e-6 W=64e-6
+mNormalTransistorPmos18 FirstStageYsourceTransconductance outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=69e-6
+mNormalTransistorPmos19 SecondStageYinnerStageBias outVoltageBiasXXpXX2 sourcePmos sourcePmos pmos4 L=1e-6 W=580e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 9.80001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp44_3
+
+** Expected Performance Values: 
+** Gain: 120 dB
+** Power consumption: 5.63001 mW
+** Area: 12924 (mu_m)^2
+** Transit frequency: 3.56701 MHz
+** Transit frequency with error factor: 3.5674 MHz
+** Slew rate: 8.64916 V/mu_s
+** Phase margin: 65.3172°
+** CMRR: 122 dB
+** VoutMax: 4.48001 V
+** VoutMin: 0.510001 V
+** VcmMax: 3.79001 V
+** VcmMin: -0.409999 V
+
+
+** Expected Currents: 
+** NormalTransistorNmos: 111.687 muA
+** NormalTransistorNmos: 21.5481 muA
+** NormalTransistorNmos: 85.1391 muA
+** NormalTransistorNmos: 128.038 muA
+** NormalTransistorNmos: 85.1391 muA
+** NormalTransistorNmos: 128.038 muA
+** NormalTransistorPmos: -85.1399 muA
+** NormalTransistorPmos: -85.1399 muA
+** DiodeTransistorPmos: -85.1399 muA
+** NormalTransistorPmos: -85.7989 muA
+** NormalTransistorPmos: -42.8989 muA
+** NormalTransistorPmos: -42.8989 muA
+** NormalTransistorNmos: 726.65 muA
+** NormalTransistorPmos: -726.649 muA
+** NormalTransistorPmos: -726.65 muA
+** DiodeTransistorNmos: 9.99901 muA
+** DiodeTransistorNmos: 9.99801 muA
+** DiodeTransistorPmos: -111.686 muA
+** DiodeTransistorPmos: -21.5489 muA
+
+
+** Expected Voltages: 
+** ibias: 1.12001  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inputVoltageBiasXXpXX1: 3.68601  V
+** out: 2.5  V
+** outFirstStage: 0.915001  V
+** outSourceVoltageBiasXXnXX1: 0.556001  V
+** outVoltageBiasXXpXX2: 4.17101  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerSourceLoad2: 3.99801  V
+** out1: 2.80101  V
+** sourceGCC1: 0.532001  V
+** sourceGCC2: 0.532001  V
+** sourceTransconductance: 3.45001  V
+** innerStageBias: 4.51001  V
+
+
+.END

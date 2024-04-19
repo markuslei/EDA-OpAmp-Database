@@ -1,0 +1,56 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp1_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=3e-6 W=24e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=3e-6 W=27e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=2e-6 W=86e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=3e-6 W=24e-6
+mNormalTransistorPmos5 out ibias sourcePmos sourcePmos pmos4 L=3e-6 W=224e-6
+mNormalTransistorPmos6 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=7e-6 W=13e-6
+mNormalTransistorPmos7 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=7e-6 W=13e-6
+mNormalTransistorPmos8 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=3e-6 W=82e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+** Expected Performance Values: 
+** Gain: 83 dB
+** Power consumption: 0.669001 mW
+** Area: 1497 (mu_m)^2
+** Transit frequency: 3.11501 MHz
+** Transit frequency with error factor: 3.10315 MHz
+** Slew rate: 6.70416 V/mu_s
+** Phase margin: 71.6198°
+** CMRR: 88 dB
+** negPSRR: 90 dB
+** posPSRR: 194 dB
+** VoutMax: 4.75 V
+** VoutMin: 0.150001 V
+** VcmMax: 3.51001 V
+** VcmMin: -0.00999999 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 15.4171 muA
+** NormalTransistorNmos: 15.4171 muA
+** NormalTransistorPmos: -30.8359 muA
+** NormalTransistorPmos: -15.4179 muA
+** NormalTransistorPmos: -15.4179 muA
+** NormalTransistorNmos: 82.8761 muA
+** NormalTransistorPmos: -82.8769 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 4.18601  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.556001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.556001  V
+** sourceTransconductance: 3.74301  V
+
+
+.END

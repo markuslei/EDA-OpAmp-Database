@@ -1,0 +1,83 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp50_4
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp50_4 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 inputVoltageBiasXXnXX1 inputVoltageBiasXXnXX1 sourceNmos sourceNmos nmos4 L=3e-6 W=6e-6
+mDiodeTransistorNmos2 outVoltageBiasXXnXX2 outVoltageBiasXXnXX2 sourceNmos sourceNmos nmos4 L=2e-6 W=45e-6
+mDiodeTransistorNmos3 FirstStageYinnerLoad2 FirstStageYinnerLoad2 sourceNmos sourceNmos nmos4 L=6e-6 W=21e-6
+mDiodeTransistorPmos4 ibias ibias outSourceVoltageBiasXXpXX1 outSourceVoltageBiasXXpXX1 pmos4 L=1e-6 W=13e-6
+mDiodeTransistorPmos5 outSourceVoltageBiasXXpXX1 outSourceVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=10e-6
+mNormalTransistorNmos6 out inputVoltageBiasXXnXX1 SecondStageYinnerTransconductance SecondStageYinnerTransconductance nmos4 L=3e-6 W=50e-6
+mNormalTransistorNmos7 outFirstStage FirstStageYinnerLoad2 sourceNmos sourceNmos nmos4 L=6e-6 W=21e-6
+mNormalTransistorNmos8 FirstStageYsourceGCC1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=3e-6 W=13e-6
+mNormalTransistorNmos9 FirstStageYsourceGCC2 in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance nmos4 L=3e-6 W=13e-6
+mNormalTransistorNmos10 FirstStageYsourceTransconductance outVoltageBiasXXnXX2 sourceNmos sourceNmos nmos4 L=2e-6 W=17e-6
+mNormalTransistorNmos11 SecondStageYinnerTransconductance outFirstStage sourceNmos sourceNmos nmos4 L=9e-6 W=454e-6
+mNormalTransistorPmos12 inputVoltageBiasXXnXX1 outSourceVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=63e-6
+mNormalTransistorPmos13 out ibias SecondStageYinnerStageBias SecondStageYinnerStageBias pmos4 L=1e-6 W=142e-6
+mNormalTransistorPmos14 outFirstStage ibias FirstStageYsourceGCC2 FirstStageYsourceGCC2 pmos4 L=1e-6 W=39e-6
+mNormalTransistorPmos15 outVoltageBiasXXnXX2 outSourceVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=43e-6
+mNormalTransistorPmos16 FirstStageYinnerLoad2 ibias FirstStageYsourceGCC1 FirstStageYsourceGCC1 pmos4 L=1e-6 W=39e-6
+mNormalTransistorPmos17 FirstStageYsourceGCC1 outSourceVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=24e-6
+mNormalTransistorPmos18 FirstStageYsourceGCC2 outSourceVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=24e-6
+mNormalTransistorPmos19 SecondStageYinnerStageBias outSourceVoltageBiasXXpXX1 sourcePmos sourcePmos pmos4 L=1e-6 W=216e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.30001e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp50_4
+
+** Expected Performance Values: 
+** Gain: 140 dB
+** Power consumption: 1.97201 mW
+** Area: 5321 (mu_m)^2
+** Transit frequency: 7.56901 MHz
+** Transit frequency with error factor: 7.56068 MHz
+** Slew rate: 7.04098 V/mu_s
+** Phase margin: 58.4418°
+** CMRR: 106 dB
+** VoutMax: 3.91001 V
+** VoutMin: 0.620001 V
+** VcmMax: 5.17001 V
+** VcmMin: 0.710001 V
+
+
+** Expected Currents: 
+** NormalTransistorPmos: -63.8139 muA
+** NormalTransistorPmos: -43.5959 muA
+** NormalTransistorPmos: -16.0799 muA
+** NormalTransistorPmos: -24.3329 muA
+** NormalTransistorPmos: -16.0799 muA
+** NormalTransistorPmos: -24.3329 muA
+** DiodeTransistorNmos: 16.0791 muA
+** NormalTransistorNmos: 16.0791 muA
+** NormalTransistorNmos: 16.5071 muA
+** NormalTransistorNmos: 8.25401 muA
+** NormalTransistorNmos: 8.25401 muA
+** NormalTransistorNmos: 218.36 muA
+** NormalTransistorNmos: 218.359 muA
+** NormalTransistorPmos: -218.359 muA
+** NormalTransistorPmos: -218.36 muA
+** DiodeTransistorNmos: 63.8131 muA
+** DiodeTransistorNmos: 43.5951 muA
+** DiodeTransistorPmos: -9.99899 muA
+** DiodeTransistorPmos: -9.99999 muA
+
+
+** Expected Voltages: 
+** ibias: 3.42701  V
+** in1: 2.5  V
+** in2: 2.5  V
+** inputVoltageBiasXXnXX1: 1.02201  V
+** out: 2.5  V
+** outFirstStage: 0.630001  V
+** outSourceVoltageBiasXXpXX1: 4.19901  V
+** outVoltageBiasXXnXX2: 0.556001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** innerLoad2: 0.637001  V
+** sourceGCC1: 4.14301  V
+** sourceGCC2: 4.14301  V
+** sourceTransconductance: 1.94501  V
+** innerStageBias: 4.28301  V
+** innerTransconductance: 0.225001  V
+
+
+.END

@@ -1,0 +1,56 @@
+** Name: SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+.MACRO SimpleTwoStageOpAmp_SimpleOpAmp1_1 ibias in1 in2 out sourceNmos sourcePmos
+mDiodeTransistorNmos1 FirstStageYout1 FirstStageYout1 sourceNmos sourceNmos nmos4 L=3e-6 W=49e-6
+mDiodeTransistorPmos2 ibias ibias sourcePmos sourcePmos pmos4 L=2e-6 W=16e-6
+mNormalTransistorNmos3 out outFirstStage sourceNmos sourceNmos nmos4 L=2e-6 W=203e-6
+mNormalTransistorNmos4 outFirstStage FirstStageYout1 sourceNmos sourceNmos nmos4 L=3e-6 W=49e-6
+mNormalTransistorPmos5 out ibias sourcePmos sourcePmos pmos4 L=2e-6 W=585e-6
+mNormalTransistorPmos6 outFirstStage in2 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=9e-6 W=99e-6
+mNormalTransistorPmos7 FirstStageYout1 in1 FirstStageYsourceTransconductance FirstStageYsourceTransconductance pmos4 L=9e-6 W=99e-6
+mNormalTransistorPmos8 FirstStageYsourceTransconductance ibias sourcePmos sourcePmos pmos4 L=2e-6 W=187e-6
+Capacitor1 out sourceNmos 10e-12
+Capacitor2 outFirstStage out 2.5e-12
+.EOM SimpleTwoStageOpAmp_SimpleOpAmp1_1
+
+** Expected Performance Values: 
+** Gain: 82 dB
+** Power consumption: 2.53401 mW
+** Area: 4058 (mu_m)^2
+** Transit frequency: 13.5501 MHz
+** Transit frequency with error factor: 13.4904 MHz
+** Slew rate: 29.0951 V/mu_s
+** Phase margin: 65.3172°
+** CMRR: 87 dB
+** negPSRR: 89 dB
+** posPSRR: 218 dB
+** VoutMax: 4.74001 V
+** VoutMin: 0.210001 V
+** VcmMax: 3.62001 V
+** VcmMin: 0.0500001 V
+
+
+** Expected Currents: 
+** DiodeTransistorNmos: 59.2591 muA
+** NormalTransistorNmos: 59.2591 muA
+** NormalTransistorPmos: -118.519 muA
+** NormalTransistorPmos: -59.2599 muA
+** NormalTransistorPmos: -59.2599 muA
+** NormalTransistorNmos: 368.264 muA
+** NormalTransistorPmos: -368.263 muA
+** DiodeTransistorPmos: -9.99899 muA
+
+
+** Expected Voltages: 
+** ibias: 4.17101  V
+** in1: 2.5  V
+** in2: 2.5  V
+** out: 2.5  V
+** outFirstStage: 0.611001  V
+** sourceNmos: 0  V
+** sourcePmos: 5  V
+** out1: 0.611001  V
+** sourceTransconductance: 3.61101  V
+
+
+.END
